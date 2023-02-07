@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class Item {
     String name;
-    BigDecimal unityValue;
+    Long unityValue;
     Integer quantityConsumed;
 
     public String getName() {
@@ -15,11 +15,11 @@ public class Item {
         this.name = name;
     }
 
-    public BigDecimal getUnityValue() {
+    public Long getUnityValue() {
         return unityValue;
     }
 
-    public void setUnityValue(BigDecimal unityValue) {
+    public void setUnityValue(Long unityValue) {
         this.unityValue = unityValue;
     }
 
