@@ -1,10 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Commander Paintball</title>
 </head>
 <body>
+        <form class="formulario" method="get">
+            <p> Preencha o formulário abaixo</p>
+
+            <div class="field">
+                <label for="id">Digite o ID do jogo: </label>
+                <input type="text" id="id">
+            </div>
+            
+            <div class="field">
+                <label for="data">Data do jogo: </label>
+                <input type="date" id="data">
+            </div> 
+
+            <div class="field">
+                <label for="dia_semana">Dia da Semana: </label>
+                <select id="dia_semana"> 
+                    <option>Segunda-Feira</option>
+                    <option>Terça-Feira</option>
+                    <option>Quarta-Feira</option>
+                    <option>Quinta-Feira</option>
+                    <option>Sexta-Feira</option>
+                    <option>Sábado</option>
+                    <option>Domingo</option>
+                </select>
+            </div>
+            <button>Adicionar Jogador</button>
+
+
+            <input type="submit" name="acao" value="Enviar" />
+        </form>
+        
+
+
+        <script src="script.js"></script>
 
 </body>
 </html>
