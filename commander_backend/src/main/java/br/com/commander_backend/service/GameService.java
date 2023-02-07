@@ -10,7 +10,9 @@ import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Objects;
 
 @Service
 public class GameService {
@@ -22,8 +24,11 @@ public class GameService {
     }
 
     public Game saveGame(Game game) {
-        LocalDate now = LocalDate.now();
-        game.setDate(now);
+
+        if(Objects.isNull(game.getDate())) {
+            game.setDate(LocalDate.now());
+        }
+
         Long arrecadated = 0L;
 
         for(Player player : game.getPlayers()) {
