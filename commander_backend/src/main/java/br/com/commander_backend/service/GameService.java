@@ -6,7 +6,11 @@ import br.com.commander_backend.repository.GameRepository;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
+import java.util.Date;
 
 @Service
 public class GameService {
@@ -18,8 +22,8 @@ public class GameService {
     }
 
     public Game saveGame(Game game) {
-//        OffsetDateTime now = OffsetDateTime.now();
-//        game.setDate(now);
+        LocalDate now = LocalDate.now();
+        game.setDate(now);
         Long arrecadated = 0L;
 
         for(Player player : game.getPlayers()) {

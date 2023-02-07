@@ -1,6 +1,6 @@
 package br.com.commander_backend.constants;
 
-public enum WeekDay {
+public enum Month {
     JANEIRO,
     FEVEREIRO,
     MARCO,

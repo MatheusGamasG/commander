@@ -1,22 +1,21 @@
 package br.com.commander_backend.model;
 
-import br.com.commander_backend.constants.WeekDay;
+import br.com.commander_backend.constants.Month;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.math.BigDecimal;
-import java.time.OffsetDateTime;
+import java.time.LocalDate;
 import java.util.List;
 
 @Document
 public class Game {
     @Id
-    String id;
-    OffsetDateTime date;
-    List<Player> players;
+    private String id;
 
-    WeekDay monthAssigned;
-    Long arrecadatedAmount;
+    private LocalDate date;
+    private List<Player> players;
+    private Month monthAssigned;
+    private Long arrecadatedAmount;
 
     public String getId() {
         return id;
@@ -26,11 +25,11 @@ public class Game {
         this.id = id;
     }
 
-    public OffsetDateTime getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(OffsetDateTime date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -42,11 +41,11 @@ public class Game {
         this.players = players;
     }
 
-    public WeekDay getMonthAssigned() {
+    public Month getMonthAssigned() {
         return monthAssigned;
     }
 
-    public void setMonthAssigned(WeekDay monthAssigned) {
+    public void setMonthAssigned(Month monthAssigned) {
         this.monthAssigned = monthAssigned;
     }
 
