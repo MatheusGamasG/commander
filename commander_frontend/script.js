@@ -1,10 +1,12 @@
 
 
-// fetch('http://localhost:8080')
-//   .then(response => response.text())
-//   .then(data => console.log(data))
-//   .catch(error => console.error(error));
+const buttonElement = document.querySelector('form');
 
+const inputElement = document.querySelector('input[type="text"]');
+const inputValue = inputElement.value;
+
+buttonElement.addEventListener('submit', event => {
+  event.preventDefault();
 fetch('http://localhost:8080/games', {
   method: "POST",
   headers: {
@@ -12,7 +14,23 @@ fetch('http://localhost:8080/games', {
   },
   body: JSON.stringify({
 
-    players: [{ name: "John", paymentMethod: 1, totalAmountConsumed: "90", itemsConsumed:[{name: "Coca-cola", unityValue: "5",quantityConsumed: 3}]}, { name: "Jane", paymentMethod: 0,totalAmountConsumed: "70" }],
+    players: [{ 
+      name: inputValue, 
+      paymentMethod: 1, 
+      totalAmountConsumed: "90", 
+        itemsConsumed:[{
+          name: "Coca-cola",
+          unityValue: "5",
+          quantityConsumed: 3
+        }]
+    }, 
+           
+    { 
+      name: "Jane", 
+      paymentMethod: 0,
+      totalAmountConsumed: "70" 
+    }],
+
     monthAssigned: 1
   })
 })
@@ -25,4 +43,4 @@ fetch('http://localhost:8080/games', {
   .catch(function (error) {
     console.error(error);
   });
-
+});
