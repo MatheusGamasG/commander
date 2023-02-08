@@ -1,5 +1,6 @@
 package br.com.commander_backend.controller;
 
+
 import br.com.commander_backend.model.Game;
 import br.com.commander_backend.service.GameService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,7 @@ public class GameController {
     @ResponseStatus(HttpStatus.CREATED)
     public Game postGame(@RequestBody Game game) {
 
+        // Fazer extração do mês e setar enum
         return gameService.saveGame(game);
     }
 

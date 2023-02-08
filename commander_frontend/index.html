@@ -3,41 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" href="assets/icone.ico" type="image/ico">
+    <link rel="stylesheet" href="bootstrap\css\bootstrap.min.css">
     <title>Commander Paintball</title>
 </head>
 <body>
-        <form class="formulario" method="get">
-            <p> Preencha o formulário abaixo</p>
+    
+    <div class="container-main">
+        <form class="formulario" id='formulario' method="post">
+            <p> Cadastro de Jogo</p>
+            <div class="box" id="box">
 
-            <div class="field">
-                <label for="id">Digite o ID do jogo: </label>
-                <input type="text" id="id">
+                <div class="field">
+                    <label for="date">Data do jogo: </label>
+                    <input type="date" id="date">
+                </div> 
+
+                <div class="field-players">
+                    <label for="name_player">Nome do Jogador: </label>
+                    <input type="text" id="name_player">
+                    
+                    <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                        <input type="radio" class="btn-check" name="pay-method" id="pay-money" autocomplete="off" value="1">
+                        <label class="btn btn-outline-primary" for="pay-money"><img src="assets/money.png" id="icon-money"/></label>
+                      
+                        <input type="radio" class="btn-check" name="pay-method" id="pay-card" autocomplete="off" value="0">
+                        <label class="btn btn-outline-primary" for="pay-card"><img src="assets/icon_card.png" id="icon-card"/></label>
+
+                    </div>
+
+                    <ul class="list-group" id="list">
+                        <li class="list-group-item">
+                            <label for="product">Produto 1:</label>
+                            <select class="name-items" id="product" name="product">
+                                <option>Bolinhas</option>
+                                <option>Coca-cola</option>
+                                <option>Água</option>
+                                <option>Cerveja</option>
+                            </select>
+
+                            <label for="quantity">Qtd: </label>
+                            <input type="number" id="quantity" class="name-items">
+                        </li>
+                      </ul> 
+                      <button id="add-item"><img src="assets/sum.png" id="icon-add-item"/></button>  
+                </div>
+
+
             </div>
             
+            <button id="add_player">Adicionar Jogador</button>
+        
             <div class="field">
-                <label for="data">Data do jogo: </label>
-                <input type="date" id="data">
-            </div> 
-
-            <div class="field">
-                <label for="dia_semana">Dia da Semana: </label>
-                <select id="dia_semana"> 
-                    <option>Segunda-Feira</option>
-                    <option>Terça-Feira</option>
-                    <option>Quarta-Feira</option>
-                    <option>Quinta-Feira</option>
-                    <option>Sexta-Feira</option>
-                    <option>Sábado</option>
-                    <option>Domingo</option>
-                </select>
+            <input type="submit" id='send' form='formulario' value="Enviar"/>
             </div>
-            <button>Adicionar Jogador</button>
-
-
-            <input type="submit" name="acao" value="Enviar" />
         </form>
         
-
+    </div>    
 
         <script src="script.js"></script>
 

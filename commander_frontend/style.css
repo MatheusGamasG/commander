@@ -1,6 +1,18 @@
 
+import node_modules\bootstrap
+
+.container-main{
+    width: 100%;
+    height: 800px;
+    background-color: bisque;
+    display: relative;
+    justify-content: center;
+}
+
 .formulario{
-    width: 400px;
+    position: absolute;
+    background-color: white;
+    width: 60%;
     padding: 30px;
     border: 1px solid #ccc;
 }
@@ -9,11 +21,21 @@
     width: 100%;
     font-size: 1.5em;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: center;
 }
 
 .field{
     width: 100%;
     margin: 15px 0;
+    text-align: center;
+}
+
+.field-players{
+    width: 100%;
+    margin: 15px 0;
+    background-color:#ccc;
+    padding: 5px;
+    border-radius: 5px;
 }
 
 .field label{
@@ -25,8 +47,8 @@
     
 }
 
-#dia_semana,#id,#data{
-    width: 60%;
+#date{
+    width: 20%;
     line-height: 30px;
     padding-left: 10px;
     height: 30px;
@@ -34,6 +56,16 @@
     border-radius: 15px;
     border: 1px solid #ccc;
     outline: none;
+}
+
+#name_player{
+    width: 30%;
+    line-height: 0px;
+    padding-left: 10px;
+    height: 30px;
+    font-size: 0.9em;
+    border-radius: 9px;
+    border: 1px solid #161515;
 }
 
 input[type=submit]{
@@ -52,4 +84,46 @@ input[type=submit]{
 input[type=submit]:hover{
     background-color: #7e7e7e;
     color: white;
+}
+
+#icon-money,#icon-card{
+    height: 30px;
+    width: 30px;
+}
+
+
+.btn.btn-outline-primary{
+    border-color: #00ccff;
+}
+
+.name-items{
+    width: 15%;
+    border: none;
+    border-radius: 5px;
+    
+}
+
+ul.list-group{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+li.list-group-item{
+    display: block;
+    width: 100%;
+    background-color: #ccc;
+    border: none;
+
+}
+
+#add-item{
+    display: inline-block;
+    border: none;
+    background: none;
+}
+
+#icon-add-item{
+    height: 20px;
+    width: 20px;
+
 }
