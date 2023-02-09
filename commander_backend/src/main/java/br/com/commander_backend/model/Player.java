@@ -8,7 +8,7 @@ import java.util.List;
 public class Player {
     String name;
     List<Item> itemsConsumed;
-    Long totalAmountConsumed;
+    BigDecimal totalAmountConsumed;
     PaymentMethod paymentMethod;
 
     public String getName() {
@@ -27,11 +27,11 @@ public class Player {
         this.itemsConsumed = itemsConsumed;
     }
 
-    public Long getTotalAmountConsumed() {
+    public BigDecimal getTotalAmountConsumed() {
         return totalAmountConsumed;
     }
 
-    public void setTotalAmountConsumed(Long totalAmountConsumed) {
+    public void setTotalAmountConsumed(BigDecimal totalAmountConsumed) {
         this.totalAmountConsumed = totalAmountConsumed;
     }
 

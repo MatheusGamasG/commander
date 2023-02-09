@@ -4,6 +4,7 @@ import br.com.commander_backend.constants.Month;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class Game {
     private LocalDate date;
     private List<Player> players;
     private Month monthAssigned;
-    private Long arrecadatedAmount;
+    private BigDecimal arrecadatedAmount;
 
     public String getId() {
         return id;
@@ -49,11 +50,11 @@ public class Game {
         this.monthAssigned = monthAssigned;
     }
 
-    public Long getArrecadatedAmount() {
+    public BigDecimal getArrecadatedAmount() {
         return arrecadatedAmount;
     }
 
-    public void setArrecadatedAmount(Long arrecadatedAmount) {
+    public void setArrecadatedAmount(BigDecimal arrecadatedAmount) {
         this.arrecadatedAmount = arrecadatedAmount;
     }
 }
