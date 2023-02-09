@@ -6,10 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/")
-
 public class GameController {
 
     final private GameService gameService;
@@ -19,16 +20,14 @@ public class GameController {
         this.gameService = gameService;
     }
 
-    @PostMapping("/games")
-    @ResponseStatus(HttpStatus.CREATED)
-    public Game postGame(@RequestBody Game game) {
-
-        return gameService.saveGame(game);
+    @GetMapping("games")
+    public List<Game> getAllGames() {
+        return gameService.getAllGames();
     }
 
-    @GetMapping
-    public String helloWorld() {
-
-        return "hello world!"; 
+    @PostMapping("games")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void postGame(@RequestBody Game game) {
+        gameService.saveGame(game);
     }
 }
