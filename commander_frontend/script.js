@@ -1,33 +1,52 @@
-//Imports
-import { Teste } from "./modules/Teste.js";
+import { GamePackage } from "./modules/GamePackage.js";
 import { Item } from "./modules/Item.js";
-import { createItem } from "./modules/CreateElements.js";
+import { Player } from "./modules/Player.js";
+import { createItem, removeElements } from "./modules/CreateElements.js";
+import { createCard } from "./modules/CreateCardPlayer.js";
 
-//Send Button
-var btn_send = document.getElementById('send')
+const btnSend = document.getElementById('btn-send');
 
-//Object Infos
-var namePlayer = document.getElementById('name_player');
-var date = document.getElementById('date');
-var payment = document.getElementsByName('pay-method');
+const namePlayer = document.getElementById('name-player');
+const date = document.getElementById('date');
+const payment = document.getElementsByName('pay-method');
 
-//Products 
-var btn_addItem = document.getElementById('add-item');
-var nameProduct = document.getElementsByName('product');
-var qtdProduct = document.getElementsByName('quantity');
-var contador = 1;
+const btnAddItem = document.getElementById('add-item');
+const nameProduct = document.getElementsByName('product');
+const qtdProduct = document.getElementsByName('quantity');
+var countProducts = 1;
 var maxProducts = 5;
+var productsList = [{}];
 
-//Add Product
-btn_addItem.addEventListener('click', event =>{
-  contador++;
+const btnAddPlayers = document.getElementById('btn-add-player');
+var playersList = [{}];
+var countPlayers = 0;
+
+
+btnAddPlayers.addEventListener('click', event => {
   event.preventDefault();
 
-  if(contador < maxProducts){
-      createItem(contador);
+  for(var i = 0; i<countProducts;i++){
+    productsList[i] = new Item(nameProduct[i].value,4,qtdProduct[i].value);
+  }
+
+  playersList[countPlayers] = new Player(namePlayer.value,paymentMethod(),productsList);
+  createCard(playersList[countPlayers]);
+  countPlayers++;
+  productsList = [{}];
+  removeElements(countProducts);
+  countProducts = 1;
+});
+
+
+btnAddItem.addEventListener('click', event =>{
+  countProducts++;
+  event.preventDefault();
+
+  if(countProducts < maxProducts){
+      createItem(countProducts);
   }else{
     alert('Número máximo de produtos adicionados.');
-    contador--;
+    countProducts--;
   }
 });
 
@@ -37,29 +56,23 @@ function paymentMethod(){
   }else{
     return payment[1].value;
   }
-}//paymentMethod
-
-//Submit Form
-btn_send.addEventListener("click", event => {
-event.preventDefault();
-
-//Make Products List
-var productsList = [{}];
-for(var i = 0; i<contador;i++){
-  productsList[i] = new Item(nameProduct[i].value,4,qtdProduct[i].value);
 }
 
-//Make Object
-var object = new Teste(date.value,namePlayer.value,paymentMethod(),productsList);
 
-fetch('http://localhost:8080/games', {
+btnSend.addEventListener("click", event => {
+  event.preventDefault();
+
+
+  var gamePackage = new GamePackage(date.value,playersList);
+
+  fetch('http://localhost:8080/games', {
   method: "POST",
   headers: {
     "Content-Type": "application/json"
   },
-  body: JSON.stringify(object)
-})
-.then(response => response.json())
-.then(data => console.log(data))
-.catch(error => console.error(error));
+  body: JSON.stringify(gamePackage)
+  })
+  .then(response => response.json())
+  .then(data => console.log(data))
+  .catch(error => console.error(error));
 });

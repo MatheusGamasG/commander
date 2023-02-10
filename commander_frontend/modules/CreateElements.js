@@ -1,46 +1,56 @@
-var ul = document.getElementById('list');
-var select = document.getElementById("product");
+const ul = document.getElementById('list');
+const select = document.getElementById("product");
 var options = select.options;
+var element = []
+var nameLabel
+var nameInput
+var qtdLabel
+var qtdInput
 
-export function createItem(contador){
+export function createItem(count){
 
-    var elemento = document.createElement('li');
-    elemento.setAttribute('class','list-group-item');
+    element[count-1] = document.createElement('li');
+    element[count-1].setAttribute('class','item-product');
+    element[count-1].setAttribute('name','product'+count);
   
-    var label = document.createElement('label');
-    label.setAttribute('for','product'+ contador);
-    label.textContent='Produto '+contador + ':  ';
+    nameLabel = document.createElement('label');
+    nameLabel.setAttribute('for','product'+ count);
+    nameLabel.setAttribute('class','labels');
+    nameLabel.textContent='Produto '+count + ':  ';
   
-    var input = document.createElement('select');
-    input.setAttribute('class','name-items');
-    input.setAttribute('id','product'+contador);
-    input.setAttribute('name','product');
+    nameInput = document.createElement('select');
+    nameInput.setAttribute('class','name-items');
+    nameInput.setAttribute('id','product'+count);
+    nameInput.setAttribute('name','product');
   
     for (var i = 0; i < options.length; i++) {
       var option = document.createElement("option");
       option.value = options[i].value;
       option.text = options[i].text;
-      input.appendChild(option);
+      nameInput.appendChild(option);
     }
   
-    var label_qtd = document.createElement('label');
-    label_qtd.setAttribute('for','quantity');
-    label_qtd.textContent=' Qtd: ';
+    qtdLabel = document.createElement('label');
+    qtdLabel.setAttribute('for','quantity');
+    qtdLabel.setAttribute('class','labels');
+    qtdLabel.textContent=' Quantidade: ';
   
-    var input_qtd = document.createElement('input');
-    input_qtd.setAttribute('type','number');
-    input_qtd.setAttribute('id','quantity'+contador);
-    input_qtd.setAttribute('class','name-items');
-    input_qtd.setAttribute('name','quantity');
+    qtdInput = document.createElement('input');
+    qtdInput.setAttribute('type','number');
+    qtdInput.setAttribute('id','quantity'+count);
+    qtdInput.setAttribute('class','name-items');
+    qtdInput.setAttribute('name','quantity');
   
-    ul.appendChild(elemento);
-    elemento.appendChild(label);
-    elemento.appendChild(input);
-    elemento.appendChild(label_qtd);
-    elemento.appendChild(input_qtd);
-  }//createItem
+    ul.appendChild(element[count-1]);
+    element[count-1].appendChild(nameLabel);
+    element[count-1].appendChild(nameInput);
+    element[count-1].appendChild(qtdLabel);
+    element[count-1].appendChild(qtdInput);
+  }
 
+  export function removeElements(count){
 
-  export function createPlayer(){
-    
+    for(var i=count-1;i!=0;i--){
+      ul.removeChild(element[i]);
+    }
   }
