@@ -3,43 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="icon" href="assets/icone.ico" type="image/ico">
     <title>Commander Paintball</title>
 </head>
 <body>
-        <form class="formulario" method="get">
-            <p> Preencha o formulário abaixo</p>
+    <div class="container-main">
+        <form class="formulario" id='formulario' method="post">
+            <p> Cadastro de Jogo</p>
 
-            <div class="field">
-                <label for="id">Digite o ID do jogo: </label>
-                <input type="text" id="id">
-            </div>
+                <div class="field-date">
+                    <label for="date">Data do jogo:</label>
+                    <input type="date" id="date">
+                </div> 
+
+                <div class="field-players">
+                    <label for="name-player" class="labels">Nome do Jogador: </label>
+                    <input type="text" id="name-player">
+                    
+                    <input type="radio" class="radio-btn" name="pay-method" id="pay-money" autocomplete="off" value="1">
+                    <label class="label-radio" for="pay-money"><img src="assets/money.png" id="icon-money"/></label>
+                      
+                    <input type="radio" class="radio-btn" name="pay-method" id="pay-card" autocomplete="off" value="0">
+                    <label class="label-radio" for="pay-card"><img src="assets/icon_card.png" id="icon-card"/></label>
+
+                    <div class="field-list">
+                        <ul class="list-products" id="list">
+                            <li class="item-product">
+                                <label for="product" class="labels">Produto 1:</label>
+                                <select class="name-items" id="product" name="product">
+                                    <option>Bolinhas</option>
+                                    <option>Coca-cola</option>
+                                    <option>Água</option>
+                                    <option>Cerveja</option>
+                                </select>
+
+                                <label for="quantity" class="labels">Quantidade: </label>
+                                <input type="number" id="quantity" class="name-items" name="quantity">
+                            </li>
+                        </ul> 
+                    </div>
+
+                    <label for="add-item" class="icon-add-item"></label>
+                    <button id="add-item"></button>
+                </div><!--fieldPlayers-->
             
-            <div class="field">
-                <label for="data">Data do jogo: </label>
-                <input type="date" id="data">
-            </div> 
-
-            <div class="field">
-                <label for="dia_semana">Dia da Semana: </label>
-                <select id="dia_semana"> 
-                    <option>Segunda-Feira</option>
-                    <option>Terça-Feira</option>
-                    <option>Quarta-Feira</option>
-                    <option>Quinta-Feira</option>
-                    <option>Sexta-Feira</option>
-                    <option>Sábado</option>
-                    <option>Domingo</option>
-                </select>
-            </div>
-            <button>Adicionar Jogador</button>
-
-
-            <input type="submit" name="acao" value="Enviar" />
+            <button id="btn-add-player">Adicionar Jogador</button>
+            <button type="submit" id="btn-send" form="formulario">Enviar</button>
         </form>
         
+        <div class="container-card" id="container-card">
+            <div class="card">
+                
+            </div>
 
+    </div>    
 
-        <script src="script.js"></script>
+        <script type="module" src="script.js"></script>
 
 </body>
 </html>
